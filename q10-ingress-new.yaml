@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: php-http-ingress
+  labels:
+    app: php-http-ingress
+    name: php-http-ingress
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: php-http-ingress
+      name: php-http-ingress
+  template:
+    metadata:
+      labels:
+        app: php-http-ingress
+        name: php-http-ingress
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+      - resources:
+          limits:
+            memory: "128Mi"
+            cpu: '0.5'
+        # Set the container image name
+        image: 'quay.io/redhattraining/php-ssl:v1.0'
+        name: php-http-ingress
+        ports:
+          # Define the container port
+        - containerPort: 8080
+          name: php-http-ingress
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+              - ALL
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: php-http
+    name: php-http
+  name: php-http
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    name: php-http
+    
