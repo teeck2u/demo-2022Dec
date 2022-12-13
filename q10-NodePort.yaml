@@ -1,10 +1,32 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: example-nodeport
+  labels:
+    app: httpd
+  namespace: demo2022
+spec:
+  securityContext:
+    runAsNonRoot: true
+    seccompProfile:
+      type: RuntimeDefault
+  containers:
+    - name: example-nodeport
+      image: 'image-registry.openshift-image-registry.svc:5000/openshift/httpd:latest'
+      ports:
+        - containerPort: 8080
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+            - ALL
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: optus-example-nodeport
+  name: example-nodeport
   labels:
-    name: optus-example
+    name: eample-nodeport
 spec:
   type: NodePort
   ports:
@@ -12,4 +34,4 @@ spec:
       nodePort: 30080
       name: http
   selector:
-    name: optus-example
+    name: example-nodeport
