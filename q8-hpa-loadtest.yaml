@@ -18,7 +18,17 @@ items:
         creationTimestamp: null
         labels:
           app: loadtest
+spec:
+  securityContext:
+    runAsNonRoot: true
+    seccompProfile:
+      type: RuntimeDefault
+
       spec:
+        securityContext:
+          runAsNonRoot: true
+          seccompProfile:
+            type: RuntimeDefault
         containers:
         - image: quay.io/redhattraining/loadtest:v1.0
           name: loadtest
@@ -29,6 +39,11 @@ items:
             limits:
               cpu: "100m"
               memory: 100Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
   status: {}
 - apiVersion: v1
   kind: Service
