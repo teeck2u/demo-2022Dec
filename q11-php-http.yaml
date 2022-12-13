@@ -5,7 +5,6 @@ metadata:
   labels:
     app: php-http
     name: php-http
-  namespace: schedule-scale
 spec:
   replicas: 1
   selector:
