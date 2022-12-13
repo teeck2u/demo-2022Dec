@@ -18,12 +18,6 @@ items:
         creationTimestamp: null
         labels:
           app: loadtest
-spec:
-  securityContext:
-    runAsNonRoot: true
-    seccompProfile:
-      type: RuntimeDefault
-
       spec:
         securityContext:
           runAsNonRoot: true
@@ -44,6 +38,7 @@ spec:
             capabilities:
               drop:
                 - ALL
+  status: {}
 - apiVersion: v1
   kind: Service
   metadata:
