@@ -1,0 +1,36 @@
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  creationTimestamp: "2022-12-12T16:37:58Z"
+  generation: 91
+  name: my-app-vpa
+  namespace: default
+  resourceVersion: "225130"
+  uid: a639f1bc-3468-413e-babd-9246f566ee1c
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: vpa-app
+  updatePolicy:
+    updateMode: "Off"
+status:
+  conditions:
+  - lastTransitionTime: "2022-12-13T01:59:08Z"
+    status: "True"
+    type: RecommendationProvided
+  recommendation:
+    containerRecommendations:
+    - containerName: vpa-app
+      lowerBound:
+        cpu: 25m
+        memory: 262144k
+      target:
+        cpu: 25m
+        memory: 262144k
+      uncappedTarget:
+        cpu: 25m
+        memory: 262144k
+      upperBound:
+        cpu: 191m
+        memory: "409347692"
