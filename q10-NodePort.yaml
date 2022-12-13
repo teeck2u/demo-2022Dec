@@ -1,24 +1,25 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: nginx
+  name: example
   labels:
-    name: nginx
+    app: nginx
+  namespace: demo2022
 spec:
+  securityContext:
+    runAsNonRoot: true
+    seccompProfile:
+      type: RuntimeDefault
   containers:
-  - name: nginx
-    image: nginx
-    securityContext:
-      runAsNonRoot: true
-      seccompProfile:
-        type: RuntimeDefault
-      containers:
-      - name: nginx
-        securityContext:
-          allowPrivilegeEscalation: false
-          capabilities:
-            drop:
-            - ALL  
+    - name: nginx
+      image: nginx
+      ports:
+        - containerPort: 8080
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+            - ALL
     
 ---
 apiVersion: v1
