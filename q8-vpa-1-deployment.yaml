@@ -18,7 +18,12 @@ items:
         creationTimestamp: null
         labels:
           app: vpa-app
+                 
       spec:
+        securityContext:
+          runAsNonRoot: true
+          seccompProfile:
+            type: RuntimeDefault
         containers:
         - image: quay.io/redhattraining/hello-nginx:v1.0
           name: vpa-app
@@ -29,6 +34,11 @@ items:
             limits:
               cpu: "100m"
               memory: 100Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
   status: {}
 - apiVersion: v1
   kind: Service
