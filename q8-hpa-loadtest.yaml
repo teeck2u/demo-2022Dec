@@ -44,7 +44,6 @@ spec:
             capabilities:
               drop:
                 - ALL
-  status: {}
 - apiVersion: v1
   kind: Service
   metadata:
