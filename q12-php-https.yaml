@@ -5,7 +5,6 @@ metadata:
   labels:
     app: php-https
     name: php-https
-  namespace: network-review
 spec:
   replicas: 1
   selector:
