@@ -17,6 +17,10 @@ spec:
         app: php-http
         name: php-http
     spec:
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
       containers:
       - resources:
           limits:
@@ -29,6 +33,11 @@ spec:
           # Define the container port
         - containerPort: 8080
           name: php-http
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+              - ALL
 ---
 apiVersion: v1
 kind: Service
