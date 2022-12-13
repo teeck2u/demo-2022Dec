@@ -2,8 +2,7 @@
 ## Update where necessary before running the command!
 
 openssl req -new -key training.key \
-   -subj "/C=US/ST=North Carolina/L=Raleigh/O=Red Hat/\
-   CN=php-https.apps.cluster-4nb24.4nb24.sandbox2115.opentlc.com" \ 
+   -subj "/C=US/ST=North Carolina/L=Raleigh/O=Red Hat/CN=php-https.apps.cluster-4nb24.4nb24.sandbox2115.opentlc.com" \ 
    -out training.csr
 
 ## Run the following command to generate a certificate
