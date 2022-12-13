@@ -1,7 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: example-headless
+  labels:
+    app: example-headless
+  namespace: demo2022
+spec:
+  securityContext:
+    runAsNonRoot: true
+    seccompProfile:
+      type: RuntimeDefault
+  containers:
+    - name: example-headless
+      image: 'image-registry.openshift-image-registry.svc:5000/openshift/httpd:latest'
+      ports:
+        - containerPort: 8080
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+            - ALL
 Version: v1
 kind: Service
 metadata:
-  name: frontend-headless 
+  name: example-headless 
 spec:
   clusterIP: None 
   ports:
@@ -10,5 +32,5 @@ spec:
     protocol: TCP
     targetPort: 8080
   selector:
-    name: frontend 
+    name: example-headless 
   type: ClusterIP
