@@ -6,7 +6,7 @@ metadata:
 #    route.openshift.io/termination: "reencrypt" 
 spec:
   rules:
-  - host: todo-ingress.apps.ocp4.example.com
+  - host: todo-ingress.apps.cluster-4nb24.4nb24.sandbox2115.opentlc.com
     http:
       paths:
       - backend:
