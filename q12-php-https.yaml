@@ -16,7 +16,12 @@ spec:
       labels:
         app: php-https
         name: php-https
+       
     spec:
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
       containers:
       - resources:
           limits:
@@ -29,6 +34,11 @@ spec:
           # Define the container port
         - containerPort: 8443
           name: php-https
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+              - ALL
         volumeMounts:
         - name: tls-certs
           readOnly: true
