@@ -31,7 +31,7 @@ items:
               cpu: "0.1m"
               memory: 25Mi
             limits:
-              cpu: "2m"
+              cpu: "0.1m"
               memory: 100Mi
           securityContext:
             allowPrivilegeEscalation: false
