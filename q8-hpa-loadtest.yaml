@@ -28,10 +28,10 @@ items:
           name: loadtest
           resources:
             requests:
-              cpu: "1m"
+              cpu: "0.1m"
               memory: 25Mi
             limits:
-              cpu: "5m"
+              cpu: "2m"
               memory: 100Mi
           securityContext:
             allowPrivilegeEscalation: false
