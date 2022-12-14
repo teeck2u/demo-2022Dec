@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: optus-cm
-data:  
-  keydata1: "1"
-  keydata2: "2"
-binaryData:
-  cm-binary-data-in-base64: 'dGhpcyBpcyBhIHRlc3QgZm9yIGVuY29kZWQgY29uZmlnbWFwIGJpbmFyeSBkYXRhCg=='
