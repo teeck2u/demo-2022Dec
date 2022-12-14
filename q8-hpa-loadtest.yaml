@@ -28,7 +28,7 @@ items:
           name: loadtest
           resources:
             requests:
-              cpu: "5m"
+              cpu: "1m"
               memory: 25Mi
             limits:
               cpu: "100m"
